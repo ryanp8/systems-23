@@ -17,7 +17,7 @@ int server_setup() {
   hints->ai_socktype = SOCK_STREAM;
   hints->ai_flags = AI_PASSIVE;
 
-  getaddrinfo(NULL, "9845", hints, &results);
+  getaddrinfo("127.0.0.1", "9845", hints, &results);
   sd = socket(results->ai_family, results->ai_socktype, results->ai_protocol);
   printf("[server] create socket\n");
   if (sd == -1) {
@@ -61,7 +61,7 @@ int client_connect() {
   hints->ai_socktype = SOCK_STREAM;
   hints->ai_flags = AI_PASSIVE;
 
-  getaddrinfo(NULL, "9845", hints, &results);
+  getaddrinfo("127.0.0.1", "9845", hints, &results);
   sd = socket(results->ai_family, results->ai_socktype, results->ai_protocol);
   printf("[client] create socket\n");
   if (sd == -1) {
